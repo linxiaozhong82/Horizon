@@ -11,44 +11,44 @@ lang: zh
 
 ## 今日结论
 
-今天最值得继续跟进的信号集中在：Microsoft、Office、licensing、consumer rights、software degradation。
+今天最值得继续跟进的信号集中在：domain expertise、security、local-llm、AI、sandboxing。
 
 面向 AI 自媒体创作，可以优先关注以下 3 个方向：
-1. **[微软将永久授权 Office 转为只读模式](https://consumerrights.wiki/w/Microsoft_Office_2019_and_2021_for_Mac_view-only_conversion_(2026))**
-2. **[领域专业知识仍是关键差异化因素](https://www.brethorsting.com/blog/2026/05/domain-expertise-has-always-been-the-real-moat/)**
-3. **[Shantell Sans：具有独特正式度轴的可变字体](https://shantellsans.com/process)**
+1. **[领域专业知识仍是关键差异化因素](https://www.brethorsting.com/blog/2026/05/domain-expertise-has-always-been-the-real-moat/)**
+2. **[Anthropic 详解 Claude 智能体沙箱隔离](https://simonwillison.net/2026/May/30/how-we-contain-claude/#atom-everything)**
+3. **[本地 LLM 服务器成本分析：6.4 千美元服务器](https://www.reddit.com/r/LocalLLaMA/comments/1tsbl9j/cost_analysis_of_my_64k_local_llm_server/)**
 
 ---
 
 ## 最值得发的 3 个选题
 
-### 选题 1：微软将永久授权 Office 转为只读模式
-
-**关联新闻**: [微软将永久授权 Office 转为只读模式](https://consumerrights.wiki/w/Microsoft_Office_2019_and_2021_for_Mac_view-only_conversion_(2026))
-
-**切入角度**: 微软计划将永久授权的 Office 2019 和 2021 for Mac 转换为只读模式，从而降低用户已购买产品的功能。 此举通过追溯限制已购软件功能，威胁消费者权益，可能为其他订阅模式树立先例，并削弱对永久授权的信任。 该转换适用于 Office 2019 和 2021 for Mac，且时间线急促；有猜测认为这与微软希望通过 O365 单独授权使用 Office 集成的 AI 代理有关。
-
-**可延展方向**: 永久授权软件允许用户无期限使用特定版本，无需重复付费，而基于订阅的 Office 365 需要持续付费。离线使用是永久授权的关键特性。微软的更改将剥夺编辑功能，迫使用户订阅才能恢复完整功能。
-
----
-
-### 选题 2：领域专业知识仍是关键差异化因素
+### 选题 1：领域专业知识仍是关键差异化因素
 
 **关联新闻**: [领域专业知识仍是关键差异化因素](https://www.brethorsting.com/blog/2026/05/domain-expertise-has-always-been-the-real-moat/)
 
-**切入角度**: 一篇博客文章认为，领域专业知识（而非仅仅 AI 熟练度）才是软件开发者持久的竞争优势，并引用了诸如“vibe 编程”应用程序和海洋数据平台等实际案例。 这重新定义了 AI 取代开发者的讨论，强调随着 AI 降低技术门槛，深厚的领域知识变得更加关键。它影响着软件工程师、AI 从业者和更广泛的科技行业。 该文章提到了“vibe 编程”（由 Andrej Karpathy 于 2025 年 2 月创造），并以一个渔包应用为例，说明海洋数据领域专业知识至关重要。文章指出，使用 AI 的领域专家仍然需要软件工程师来实现稳健的解决方案。
+**切入角度**: 一篇博客文章认为，领域专业知识（而非仅仅 AI 熟练度）才是软件开发者持久的竞争优势，并引用了诸如“vibe 编程”应用程序和海洋数据平台等实际案例。 这重新定义了 AI 取代开发者的讨论，强调随着 AI 降低技术门槛，深厚的领域知识变得更加关键。它影响着软件工程师、AI 从业者和更广泛的科技行业。
 
-**可延展方向**: Vibe 编程是一种 AI 辅助编程实践，开发者通过提示描述任务并接受生成的代码而不进行彻底审查，从而降低了软件创建的门槛。随着 LLM 等 AI 工具的改进，这一术语逐渐流行，但批评者指出了代码质量和安全性的风险。这篇博客文章认为，随着 vibe 编程变得普遍，领域专业知识——即深入理解问题——成为无法轻易复制的真正护城河。
+**可延展方向**: Vibe 编程是一种 AI 辅助编程实践，开发者通过提示描述任务并接受生成的代码而不进行彻底审查，从而降低了软件创建的门槛。随着 LLM 等 AI 工具的改进，深厚的领域知识成为无法轻易复制的真正护城河。
 
 ---
 
-### 选题 3：Shantell Sans：具有独特正式度轴的可变字体
+### 选题 2：Anthropic 详解 Claude 智能体沙箱隔离
 
-**关联新闻**: [Shantell Sans：具有独特正式度轴的可变字体](https://shantellsans.com/process)
+**关联新闻**: [Anthropic 详解 Claude 智能体沙箱隔离](https://simonwillison.net/2026/May/30/how-we-contain-claude/#atom-everything)
 
-**切入角度**: Shantell Sans 是一款于 2023 年发布的可变字体，其独特之处在于包含一个'正式度'轴，用户可以在非正式与正式排版风格之间平滑过渡。该字体将人性化设计理念与现代 OpenType 可变字体技术相结合。 该字体展示了可变字体轴在传统字重和字宽之外的创造性应用，为表达性排版开辟了新可能。其人性化设计理念对抗了 AI 生成设计的刻板趋势，对于寻求更个性化风格的品牌具有参考价值。 正式度轴是一个自定义轴，可调节字形从俏皮非正式到结构化正式，这在可变字体中较为罕见。该字体已在 Google Fonts 上提供，可供测试和使用。
+**切入角度**: Anthropic 发布了一篇详细的技术文章，解释了如何在 Claude.ai、Claude Code 和 Claude Cowork 等产品中对 Claude 进行沙箱隔离。理解这些隔离方法有助于建立对 AI 系统的信任，并推动防止数据泄露和滥用的最佳实践。
 
-**可延展方向**: 可变字体是一种单个文件可存储多种设计变体的字体格式，通过字重、字宽、光学尺寸等轴进行控制。正式度轴是一个非常规的添加，通常控制风格替代而非连续变化。这种方法呼应了 Metafont 的理念，Metafont 是 20 世纪 80 年代的一种程序化字体设计系统，允许参数化调整。
+**可延展方向**: Claude.ai 使用 gVisor，Claude Code 在 macOS 上使用 Apple Seatbelt、在 Linux 上使用 Bubblewrap，Claude Cowork 则使用完整虚拟机。这是“AI Agent 进入生产环境后，安全隔离如何落地”的实用选题。
+
+---
+
+### 选题 3：本地 LLM 服务器成本分析：6.4 千美元服务器
+
+**关联新闻**: [本地 LLM 服务器成本分析：6.4 千美元服务器](https://www.reddit.com/r/LocalLLaMA/comments/1tsbl9j/cost_analysis_of_my_64k_local_llm_server/)
+
+**切入角度**: 一位 Reddit 用户发布了一份本地 LLM 服务器总拥有成本分析，涵盖硬件折旧、电费，以及与 API 使用和编程计划的比较。该服务器配备四块 AMD MI100 GPU，每天处理 2040 万输入 token 和 132 万输出 token。
+
+**可延展方向**: 这组数据适合延展为“本地模型和云 API 到底怎么选”：硬件总成本为 6406.45 美元，电费约每年 770.15 美元，而通过 OpenRouter 的等效 API 使用约每年 3701.10 美元。
 
 ---
 
