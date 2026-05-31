@@ -159,3 +159,49 @@ def test_generate_summary_zh_adds_creator_conclusion_and_publish_topics():
     assert "**切入角度**: Summary for item 1." in result
     assert "### 选题 3：Important Item 3" in result
     assert "### 选题 4：" not in result
+
+
+def test_generate_summary_prefers_ai_creator_topics_over_generic_high_score_items():
+    summarizer = DailySummarizer()
+    generic = _make_item(1)
+    generic.title = "Typography Design Update"
+    generic.ai_tags = ["typography", "design"]
+    creator = _make_item(2)
+    creator.title = "Claude Agent Sandbox"
+    creator.ai_tags = ["Claude", "AI", "sandboxing"]
+
+    result = _run_async(
+        summarizer.generate_summary(
+            [generic, creator],
+            date="2026-04-25",
+            total_fetched=2,
+            language="zh",
+        )
+    )
+
+    assert result.index("### 选题 1：Claude Agent Sandbox") < result.index("### 选题 2：Typography Design Update")
+
+
+def test_generate_summary_prioritizes_creator_story_then_llm_then_ml_technical_topic():
+    summarizer = DailySummarizer()
+    ml_technical = _make_item(1)
+    ml_technical.title = "PyTorch Debugger"
+    ml_technical.ai_tags = ["PyTorch", "machine learning"]
+    llm_ecosystem = _make_item(2)
+    llm_ecosystem.title = "Local LLM Cost Analysis"
+    llm_ecosystem.ai_tags = ["local-llm", "hardware"]
+    creator_story = _make_item(3)
+    creator_story.title = "Claude Agent Sandbox"
+    creator_story.ai_tags = ["Claude", "agent"]
+
+    result = _run_async(
+        summarizer.generate_summary(
+            [ml_technical, llm_ecosystem, creator_story],
+            date="2026-04-25",
+            total_fetched=3,
+            language="zh",
+        )
+    )
+
+    assert result.index("### 选题 1：Claude Agent Sandbox") < result.index("### 选题 2：Local LLM Cost Analysis")
+    assert result.index("### 选题 2：Local LLM Cost Analysis") < result.index("### 选题 3：PyTorch Debugger")

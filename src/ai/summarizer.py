@@ -8,6 +8,11 @@ from ..models import ContentItem
 
 _CJK = r"[\u4e00-\u9fff\u3400-\u4dbf]"
 _ASCII = r"[A-Za-z0-9]"
+_CREATOR_TOPIC_SIGNAL_GROUPS = (
+    ("agent", "claude", "gpt", "codex", "prompt", "vibe coding", "image generation"),
+    ("llm", "qwen", "stable diffusion", "flux"),
+    ("machine learning", "pytorch"),
+)
 
 
 def _pangu(text: str) -> str:
@@ -133,10 +138,14 @@ class DailySummarizer:
 
     def _format_editorial_sections(self, items: List[ContentItem], labels: dict, language: str) -> str:
         """Render a compact creator-oriented conclusion and publishing shortlist."""
-        selected = items[:3]
+        selected = self._select_publish_topics(items)
         tags = []
-        for item in selected:
-            for tag in item.ai_tags:
+        max_tags = max((len(item.ai_tags) for item in selected), default=0)
+        for tag_index in range(max_tags):
+            for item in selected:
+                if tag_index >= len(item.ai_tags):
+                    continue
+                tag = item.ai_tags[tag_index]
                 if tag not in tags:
                     tags.append(tag)
         focus = "、".join(tags[:5]) if language == "zh" else ", ".join(tags[:5])
@@ -183,6 +192,34 @@ class DailySummarizer:
             topic_sections += ["", "---", ""]
 
         return "\n".join(conclusion + ["", "---", ""] + topic_sections) + "\n"
+
+    def _select_publish_topics(self, items: List[ContentItem]) -> List[ContentItem]:
+        """Prefer AI-related items for the creator shortlist, then fill by score."""
+        creator_item_groups = [[] for _ in _CREATOR_TOPIC_SIGNAL_GROUPS]
+        general_ai_items = []
+        other_items = []
+        for item in items:
+            searchable = " ".join([item.title, *item.ai_tags]).casefold()
+            creator_group = next(
+                (
+                    group_index
+                    for group_index, signals in enumerate(_CREATOR_TOPIC_SIGNAL_GROUPS)
+                    if any(
+                        re.search(rf"(?<![a-z0-9]){re.escape(signal)}(?![a-z0-9])", searchable)
+                        for signal in signals
+                    )
+                ),
+                None,
+            )
+            is_general_ai_topic = re.search(r"(?<![a-z0-9])ai(?![a-z0-9])", searchable)
+            if creator_group is not None:
+                creator_item_groups[creator_group].append(item)
+            elif is_general_ai_topic:
+                general_ai_items.append(item)
+            else:
+                other_items.append(item)
+        creator_items = [item for group in creator_item_groups for item in group]
+        return (creator_items + general_ai_items + other_items)[:3]
 
     def generate_webhook_overview(
         self,
